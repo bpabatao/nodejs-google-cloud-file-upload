@@ -1,4 +1,5 @@
 # Node.js upload File to Google Cloud Storage
+
 ## Project Setup
 
 ```
@@ -6,6 +7,7 @@ npm install - to install dependencies
 ```
 
 ### Run
+
 ```
 node server.js
 
@@ -14,19 +16,21 @@ or
 npx nodemon server.js
 ```
 
-
 Google Cloud Storage located at:
+
 ```
 google-cloud-key.json
 ```
-Note:
-1. I will be removing this .json file after 3 days.
-2. All files that will be uploaded has public URL, so they are all accessible by everyone for a certain time.
 
+Note:
+
+1. Please email me for the Google Cloud Storage Credentials
+2. All files that will be uploaded has public URL, so they are all accessible by everyone for a certain time.
 
 PORT: 8080
 
-### API Routes:
+### API Routes
+
 ```
 POST /upload : upload file to Google Cloud Storage
 GET /files : get files lits details from Google Cloud Storage
@@ -35,6 +39,7 @@ DELETE /files/:privateKey : delete file by privateKey from Google Cloud Storage
 ```
 
 Test data files in the Google Cloud Storage:
+
 ```
 [
     {
