@@ -1,8 +1,8 @@
 # Node.js upload File to Google Cloud Storage
-## Project setup
+## Project Setup
 
 ```
-npm install
+npm install - to install dependencies
 ```
 
 ### Run
@@ -19,13 +19,14 @@ Google Cloud Storage located at:
 ```
 google-cloud-key.json
 ```
-Note: 
+Note:
 1. I will be removing this .json file after 3 days.
 2. All files that will be uploaded has public URL, so they are all accessible by everyone for a certain time.
 
+
 PORT: 8080
 
-API Routes:
+### API Routes:
 ```
 POST /upload : upload file to Google Cloud Storage
 GET /files : get files lits details from Google Cloud Storage
