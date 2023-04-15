@@ -1,7 +1,6 @@
 # Node.js upload File to Google Cloud Storage
-```
-
 ## Project setup
+
 ```
 npm install
 ```
