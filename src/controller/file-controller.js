@@ -76,10 +76,10 @@ const getListFiles = async (req, res) => {
     const [files] = await bucket.getFiles();
     let fileInfos = [];
 
-    files.forEach(async (file) => {
+    files.forEach((file) => {
       fileInfos.push({
         name: file.name,
-        id: file.id,
+        publicKey: file.id,
         publicUrl: `https://storage.googleapis.com/${file.metadata.bucket}/${file.metadata.name}`,
       });
     });
@@ -94,21 +94,23 @@ const getListFiles = async (req, res) => {
 
 const getFileDetails = async (req, res) => {
   try {
-    const [metaData] = await bucket.file(req.params.name).getMetadata();
+    const [metaData] = await bucket.file(req.params.publicKey).getMetadata();
     const privateKey = await fileService.generatePrivateKey(metaData.name)
 
-    let fileInfos = {
+    const fileInfos = {
       id: metaData.id,
       name: metaData.name,
       bucket: metaData.bucket,
       contentType: metaData.contentType,
       size: metaData.size,
       publicUrl: `https://storage.googleapis.com/${metaData.bucket}/${metaData.name}`,
-      privateKey
+      timeCreated: metaData.timeCreated,
+      privateKey,
     };
     res.status(200).send(fileInfos);
 
   } catch (err) {
+    console.log(err);
     res.status(500).send({
       message: "File not found",
     });
